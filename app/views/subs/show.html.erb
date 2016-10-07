@@ -1,0 +1,7 @@
+<h1><%= @sub.title %></h1>
+<p><%= @sub.description %></p>
+
+<% if current_user.id == @sub.moderator_id %>
+  <%= button_to "edit r/#{@sub.title}", edit_sub_url(@sub), method: :get %>
+  <%= button_to "delete r/#{@sub.title}", sub_url(@sub), method: :delete, data: {confirm: "Are you sure?"} %>
+<% end %>
