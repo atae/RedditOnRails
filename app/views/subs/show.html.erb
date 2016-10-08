@@ -1,5 +1,13 @@
 <h1><%= @sub.title %></h1>
-<p><%= @sub.description %></p>
+<p>Description: <%= @sub.description %></p>
+
+<h3>Posts</h3>
+<% @sub.posts.each do |subposts| %>
+<%= link_to "#{subposts.title}", sub_post_url(subposts.sub_id,subposts) %>
+<br>
+<% end %>
+<br>
+<%= button_to "Add new post", new_sub_post_url(@sub), method: :get %>
 
 <% if current_user.id == @sub.moderator_id %>
   <%= button_to "edit r/#{@sub.title}", edit_sub_url(@sub), method: :get %>

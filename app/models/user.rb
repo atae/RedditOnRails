@@ -5,7 +5,13 @@ class User < ActiveRecord::Base
 
   attr_reader :password
 
+  has_many :posts,
+    foreign_key: :author_id,
+    class_name: :Post
 
+  has_many :comments,
+  foreign_key: :author_id,
+  class_name: :Comment
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
@@ -33,7 +39,7 @@ class User < ActiveRecord::Base
   end
 
   private
-  
+
   def ensure_session_token
     self.session_token ||= generate_session_token
   end

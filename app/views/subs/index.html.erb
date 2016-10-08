@@ -3,5 +3,6 @@
 <% Sub.all.each do |subreddit| %>
   <%= link_to "r/#{subreddit.title}", sub_url(subreddit) %>
 <% end %>
-
+<br>
+<br>
 <%= button_to "New subreddit", new_sub_url, method: :get %>
